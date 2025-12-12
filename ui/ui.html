@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+  <title>Task Manager - UI Dashboard</title>
+  <link rel="stylesheet" href="ui.css">
+</head>
+<body>
+  <header>
+    <h1>Task Manager Dashboard</h1>
+    <p class="subtitle">Manage and visualize tasks from JSONPlaceholder API</p>
+  </header>
+
+  <main>
+    <section class="controls" aria-label="Task Manager Controls">
+      <div class="button-group">
+        <button id="loadData" class="btn btn-primary" aria-label="Load tasks and users from API">
+          Load Data
+        </button>
+        <button id="showStats" class="btn btn-secondary" aria-label="Show task statistics" disabled>
+          Show Statistics
+        </button>
+        <button id="showUsers" class="btn btn-secondary" aria-label="Show user statistics" disabled>
+          Show Users
+        </button>
+        <button id="clearData" class="btn btn-secondary" aria-label="Clear displayed data" disabled>
+          Clear
+        </button>
+      </div>
+
+      <div class="filter-group">
+        <label for="statusFilter" class="search-filter">Filter by status</label>
+        <select id="statusFilter" class="select" aria-label="Filter tasks by status" disabled>
+          <option value="">All Statuses</option>
+          <option value="completed">Completed</option>
+          <option value="pending">Pending</option>
+          <option value="overdue">Overdue</option>
+        </select>
+
+        <label for="searchInput" class="search-filter">Search tasks</label>
+        <input 
+          type="search" 
+          id="searchInput" 
+          class="input" 
+          placeholder="Search tasks..." 
+          aria-label="Search tasks by title or ID"
+          disabled
+        >
+      </div>
+
+      <div class="add-task-section">
+        <h2>Add New Task</h2>
+        <form id="addTaskForm">
+          <div class="add-task-form-row">
+            <label for="taskTitle">Task Title:</label>
+            <input 
+              type="text" 
+              id="taskTitle" 
+              name="taskTitle" 
+              required 
+              class="input add-task-title-input"
+              aria-label="Enter task title"
+            >
+            
+            <label for="taskUserId">User ID:</label>
+            <input 
+              type="number" 
+              id="taskUserId" 
+              name="taskUserId" 
+              min="1" 
+              required 
+              class="input add-task-user-input"
+              aria-label="Enter user ID"
+            >
+            
+            <label for="taskCompleted">
+              <input 
+                type="checkbox" 
+                id="taskCompleted" 
+                name="taskCompleted"
+                aria-label="Mark task as completed"
+              >
+              Completed
+            </label>
+            
+            <button 
+              type="submit" 
+              id="addTaskBtn" 
+              class="btn btn-primary"
+              disabled
+              aria-label="Add new task"
+            >
+              Add Task
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="output" aria-live="polite" aria-atomic="true">
+      <div id="errorMessage" class="error" role="alert" aria-live="assertive" hidden></div>
+
+      <div id="outputContent" class="content"></div>
+    </section>
+  </main>
+
+  <script type="module" src="ui.js"></script>
+</body>
+</html>
+

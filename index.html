@@ -4,18 +4,52 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  <title>Task Manager API - Starter Pack</title>
+  <title>Task Manager API Client</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <h1>API Task Manager</h1>
-  <p>Click the button below to load tasks from the API</p>
+  <p>Click the buttons below to interact with the API</p>
   
-  <button id="loadDataBtn">Load Data</button>
+  <div class="button-group">
+    <button id="loadDataBtn">Load Data</button>
+    <button id="showStatsBtn" disabled>Show Stats</button>
+    <button id="showUsersBtn" disabled>Show Users</button>
+    <button id="filterCompletedBtn" disabled>Filter: Completed</button>
+    <button id="filterPendingBtn" disabled>Filter: Pending</button>
+    <button id="filterAllBtn" disabled>Show All</button>
+  </div>
+  
+  <div class="add-task-section">
+    <h3>Add New Task</h3>
+    <form id="addTaskForm">
+      <div class="form-row">
+        <label for="taskTitle">Task Title:</label>
+        <input type="text" id="taskTitle" name="taskTitle" required>
+      </div>
+      
+      <div class="form-row">
+        <label for="taskUserId">User ID:</label>
+        <input type="number" id="taskUserId" name="taskUserId" min="1" required>
+      </div>
+      
+      <div class="form-row">
+        <label for="taskCompleted">
+          <input type="checkbox" id="taskCompleted" name="taskCompleted">
+          Completed
+        </label>
+      </div>
+      
+      <button type="submit" id="addTaskBtn" disabled>Add Task</button>
+    </form>
+  </div>
   
   <div id="status"></div>
+  <div id="output"></div>
+  
+  <button id="uiRouteBtn" class="route-btn" aria-label="Navigate to dashboard UI">View Dashboard UI</button>
 
-  <script type="module" src="main.js"></script>
+  <script type="module" src="index/index.js"></script>
 </body>
 </html>
 
